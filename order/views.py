@@ -73,8 +73,6 @@ def process_file(request):
             'cost': str(cost)
         })
         
-        print("POST data:", request.POST)
-
     except Exception as ex:
         import traceback
         traceback.print_exc()

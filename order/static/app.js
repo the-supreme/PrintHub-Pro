@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("uploadForm");
   const fileInput = form.querySelector('input[type="file"]');
   const groupToggle = document.querySelector("#group-toggle-button");
-
+  const configPanel = document.querySelector("#config-panel");
   fileInput.addEventListener("change", (e) => {
     document.querySelector(".uploaded-file-container").style.display = "block";
 
@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
       configButton.textContent = "Configure";
       configButton.classList.add("config-btn");
       configButton.type = "button";
-
+      configButton.addEventListener("click", (e) => {
+        configPanel.style.display = "block";
+      });
       fileCard.appendChild(fileName);
       fileCard.appendChild(configButton);
       uploadSection.appendChild(fileCard);
@@ -64,6 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
         groupedConfigButton.classList.add("config-btn", "group-config-btn");
         groupCardContainer.appendChild(groupedConfigButton);
         groupedConfigButton.type = "button";
+        groupedConfigButton.addEventListener("click", (e) => {
+          configPanel.style.display = "block";
+        });
       }
     } else {
       // Remove grouping and restore individual config buttons
@@ -89,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = new FormData();
     const files = fileInput.files;
-    uploadSection.innerHTML = "";
 
     for (let file of files) {
       formData.append("files", file);
