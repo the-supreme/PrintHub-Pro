@@ -1,0 +1,150 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+<form id="uploadForm" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <!-- 🧩 LEFT SIDE: Uploads, Files, Cart -->
+    <div class="space-y-6">
+
+        <!-- Dropzone -->
+        <div id="dropzone" class="border-2 border-dashed p-4 text-center rounded-md bg-gray-50">
+            <p class="font-semibold">Upload Your Files</p>
+            <input type="file" id="fileInput" name="files" multiple hidden>
+            <button type="button" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded"
+                onclick="document.getElementById('fileInput').click()">Browse Files</button>
+            <p class="text-sm text-gray-500 mt-1">Supported: PDF, Word, PPT, Excel, Images, TXT</p>
+        </div>
+
+        <!-- Uploaded Files List -->
+        <div>
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-semibold">Uploaded Files</h3>
+                <label class="flex items-center gap-2 text-sm">
+                    <input type="checkbox" id="groupFilesToggle" class="accent-blue-600">
+                    <span>Group all into one job</span>
+                </label>
+            </div>
+            <div id="uploadedFilesContainer" class="space-y-4">
+                <!-- JS will insert file blocks here -->
+            </div>
+        </div>
+
+        <!-- Cart -->
+        <div id="cart" class="bg-gray-100 p-4 rounded">
+            <h3 class="text-lg font-semibold mb-2">Cart</h3>
+            <!-- JS renders cart items -->
+        </div>
+    </div>
+
+    <!-- 🧩 RIGHT SIDE: Static Print Settings + Submit -->
+    <div class="space-y-6">
+        <!-- Static Default Settings -->
+        <div class="bg-white border p-4 rounded shadow">
+            <h3 class="text-lg font-semibold mb-2">Default Print Settings</h3>
+
+            <label class="block mb-2">Layout:
+                <select name="layout" class="w-full border p-2 rounded">
+                    <option value="normal">normal</option>
+                    <option value="2in1">2-in-1</option>
+                    <option value="4in1">4-in-1</option>
+                    <option value="booklet">booklet</option>
+
+                </select>
+            </label>
+
+            <label class="block mb-2">Orientation:
+                <select name="orientation" class="w-full border p-2 rounded">
+                    <option value="portrait">Portrait</option>
+                    <option value="landscape">Landscape</option>
+                </select>
+            </label>
+
+            <label class="block mb-2">Color Mode:
+                <select name="color_mode" class="w-full border p-2 rounded">
+                    <option value="bw">Black & White</option>
+                    <option value="color">Color</option>
+                </select>
+            </label>
+
+            <label class="block mb-2">Paper Size:
+                <select name="paper_size" class="w-full border p-2 rounded">
+                    <option value="A4">A4</option>
+                    <option value="A3">A3</option>
+                </select>
+            </label>
+
+            <label class="block flex items-center gap-2 mb-2">
+                <input type="checkbox" name="duplex" class="accent-blue-600"> Duplex
+            </label>
+
+            <label class="block flex items-center gap-2 mb-2">
+                <input type="checkbox" name="insert_blank_pages" class="accent-blue-600"> Insert blank pages
+            </label>
+        </div>
+
+        <!-- User Info & Submit -->
+        <div class="bg-white border p-4 rounded shadow">
+            <h3 class="text-lg font-semibold mb-2">Your Info</h3>
+            <label class="block mb-2">Name:
+                <input type="text" id="name" class="w-full border p-2 rounded">
+            </label>
+            <label class="block mb-2">Email:
+                <input type="email" id="email" class="w-full border p-2 rounded">
+            </label>
+            <label class="block mb-2">Phone:
+                <input type="text" id="phone" class="w-full border p-2 rounded">
+            </label>
+            <button type="button" id="submitOrderBtn"
+                class="w-full mt-4 bg-green-600 text-white px-4 py-2 rounded">Submit Order</button>
+        </div>
+    </div>
+</form>
+
+<!-- 🔧 Template: File Config Panel -->
+<template id="printSettingsTemplate">
+    <div class="file-config bg-gray-100 p-4 rounded mt-2">
+        <label class="block mb-2">Layout:
+            <select name="layout" class="w-full border p-2 rounded">
+                <option value="1in1">1-in-1</option>
+                <option value="2in1">2-in-1</option>
+                <option value="4in1">4-in-1</option>
+            </select>
+        </label>
+
+        <label class="block mb-2">Orientation:
+            <select name="orientation" class="w-full border p-2 rounded">
+                <option value="portrait">Portrait</option>
+                <option value="landscape">Landscape</option>
+            </select>
+        </label>
+
+        <label class="block mb-2">Color Mode:
+            <select name="color_mode" class="w-full border p-2 rounded">
+                <option value="bw">Black & White</option>
+                <option value="color">Color</option>
+            </select>
+        </label>
+
+        <label class="block mb-2">Pages:
+            <input type="text" name="pages" class="w-full border p-2 rounded" placeholder="e.g. 1-3,5">
+        </label>
+
+        <label class="block mb-2">Qty:
+            <input type="number" name="qty" class="w-full border p-2 rounded" value="1" min="1">
+        </label>
+
+        <label class="block flex items-center gap-2 mb-2">
+            <input type="checkbox" name="duplex" class="accent-blue-600"> Duplex
+        </label>
+
+        <label class="block flex items-center gap-2 mb-2">
+            <input type="checkbox" name="insert_blank_pages" class="accent-blue-600"> Insert Blank Pages
+        </label>
+
+        <button type="button" class="add-to-cart-btn mt-2 bg-green-500 text-white px-3 py-2 rounded">Add to
+            Cart</button>
+    </div>
+</template>

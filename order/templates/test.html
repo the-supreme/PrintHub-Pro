@@ -1,0 +1,97 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<form id="uploadForm" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-container" style="display: flex; gap: 2rem; align-items: flex-start;">
+
+        <!-- LEFT SIDE -->
+        <div class="left-section" style="flex: 1;">
+
+            <!-- FILE UPLOAD -->
+            <div class="file-upload-design">
+                <label for="file-upload">
+                    <svg viewBox="0 0 640 512" height="1em">
+                        <path d="...your svg path..." />
+                    </svg>
+                    <p>Drag and Drop</p>
+                    <p>or</p>
+                    <span class="browse-button">Browse file</span>
+                    <input type="file" name="files" id="file-upload" style="display: none;" multiple>
+                </label>
+            </div>
+
+            <!-- CONFIG PANEL (initially hidden) -->
+            <div id="config-panel" style="display: none; margin-top: 1rem;">
+                <label>Layout:</label>
+                <select name="layout">
+                    <option value="normal">Normal</option>
+                    <option value="booklet">Booklet</option>
+                    <option value="2-in-1">2 in 1</option>
+                    <option value="4-in-1">4 in 1</option>
+                </select><br><br>
+
+                <label>Color Mode:</label>
+                <select name="color_mode">
+                    <option value="color">Color</option>
+                    <option value="bw">Black & White</option>
+                </select><br><br>
+
+                <label>Orientation:</label>
+                <select name="orientation">
+                    <option value="portrait">Portrait</option>
+                    <option value="landscape">Landscape</option>
+                </select><br><br>
+
+                <label>Paper Size:</label>
+                <select name="paper_size">
+                    <option value="A4">A4</option>
+                    <option value="A5">A5</option>
+                </select><br><br>
+
+                <label>Duplex Printing?</label>
+                <input type="checkbox" name="duplex"><br><br>
+
+                <label>Insert Blank Page at End?</label>
+                <input type="checkbox" name="insert_blank_pages"><br><br>
+
+                <label>Page Range (e.g. 1-5,8):</label>
+                <input type="text" name="pages" placeholder="Leave blank for all"><br><br>
+
+                <button type="button" id="addToCartBtn">Add to Cart</button>
+            </div>
+
+            <!-- CART -->
+            <h2>Cart</h2>
+            <div id="cart"></div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="right-section" style="flex: 1;">
+
+            <!-- PERSONAL INFO -->
+            <label>Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label>Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label>Phone Number:</label>
+            <input type="text" id="phone" name="phone_number" required><br><br>
+
+            <label>Number of Copies:</label>
+            <input type="number" name="qty" value="1" min="1" required><br><br>
+
+            <!-- COST SUMMARY -->
+            <div id="cost-summary" style="margin-top: 2rem;">
+                <h3>Total Cost: <span id="totalCost">RM 0.00</span></h3>
+            </div>
+
+            <button type="submit" id="submitOrderBtn">Submit Order</button>
+        </div>
+
+    </div>
+</form>
+
+<script src="{% static 'app.js' %}"></script>

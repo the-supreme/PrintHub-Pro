@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #323232;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    border-bottom: 4px solid #000;
+
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.printer-icon {
+    fill: white;
+    width: 40px;
+    height: 40px;
+}
+
+.software-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tagline {
+    font-size: 16px;
+    margin-top: 5px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.upload-container {
+    --background: #d3d3d3;
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --main-color: #323232;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    margin: 2em;
+    padding: 1em;
+}
+
+.upload-container h2 {
+    text-align: left;
+}
+
+.file-upload-design {
+    margin: 1em;
+    border: 2px dashed #323232;
+    border-radius: 10px;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    transition: 0.3s ease-in-out;
+}
+
+.file-upload-design:hover {
+    background-color: #e3e6ea;
+    border-color: #323232;
+    cursor: pointer;
+}
+
+.file-upload-design svg {
+    fill: #323232;
+    width: 50px;
+    height: 50px;
+}
+
+.file-upload-design p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.browse-button {
+    background-color: #323232;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.browse-button:hover {
+    background-color: #000000;
+}
+
+.file-upload-design.drag-over {
+    background-color: #d1e7ff;
+    border-color: #357ABD;
+}
+
+.personal-info-container {
+    --background: #d3d3d3;
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --main-color: #323232;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    margin: 2em 0;
+    margin-right: 2em;
+    padding: 1em;
+}
+
+.personal-info-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.personal-info-container input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-family: inherit;
+    border: 1px solid #ccc;
+
+}
+
+.personal-info-container h2 {
+    text-align: center;
+    margin: .5em 0 1em;
+}
+
+.uploaded-file-title {
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+    margin: 2em;
+    text-align: center;
+    justify-content: center;
+}
+
+.group-card-container {
+    padding: 1em;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 1.5em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #9fccfa;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5em;
+  width: 1.5em;
+  inset: 0;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.switch input:checked + .slider {
+  background: #0974f1;
+}
+
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #0974f1;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.9em);
+}
