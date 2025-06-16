@@ -48,9 +48,13 @@ INSTALLED_APPS = [
     'django_google_fonts',
 ]
 
+
 GOOGLE_FONTS = ["Poppins"]
 GOOGLE_FONTS_DIR = BASE_DIR / "fonts"
-STATICFILES_DIRS = [BASE_DIR / "static", BASE_DIR / "fonts"]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "order", "static"),
+    BASE_DIR / "fonts"
+]
 
 
 MIDDLEWARE = [

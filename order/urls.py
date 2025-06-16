@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path("api/upload/", views.process_file, name="upload-api"),
-    path("api/submit/", views.submit_order, name="submit-order"),
+    path("api/submit-order/", views.submit_order, name="submit-order"),
     path("", views.upload_form_view, name="upload-form"),
 ]

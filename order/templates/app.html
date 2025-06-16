@@ -93,6 +93,11 @@
                 <label>Page Range (e.g. 1-5,8):</label>
                 <input type="text" name="pages" placeholder="Leave blank for all"><br><br>
 
+                <label>Number of Copies:</label>
+                <input type="number" name="qty" value="1" min="1" required><br><br>
+
+
+
                 <button type="submit" id="addToCartBtn">Add to Cart</button>
             </div>
 
@@ -118,9 +123,6 @@
             </div>
 
             <div class="summary-container">
-                <label>Number of Copies:</label>
-                <input type="number" name="qty" value="1" min="1" required><br><br>
-
                 <!-- COST SUMMARY -->
                 <div id="cost-summary" style="margin-top: 2rem;">
                     <h3>Total Cost: <span id="totalCost">RM 0.00</span></h3>
