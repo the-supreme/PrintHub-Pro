@@ -424,3 +424,9 @@
 #submitOrderBtn:hover {
     background-color: #55828B;
 }
+
+.cart-item-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -151,7 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
             qty: form.qty.value,
           },
         });
-        document.querySelector("#totalCost").innerHTML = `RM ${data.cost}`
         renderCart(); // ✅ Update cart display
       } else {
         alert("Upload error.");
@@ -216,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="renamed-filename"><strong>${item.filename}</strong></p>
           <div class="cart-item-summary">
             <p>Pages: ${item.page_count}</p>
-            <p>Cost: RM${item.cost}</p>
             <p>Layout: ${item.config.layout}</p>
             <p>Orientation: ${item.config.orientation}</p>
             <p>Color Mode: ${item.config.color_mode}</p>
@@ -224,14 +222,19 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>Duplex: ${item.config.duplex ? "Yes" : "No"}</p>
             <p>Quantity: ${item.config.qty}</p>
           </div>
-          <p><a href="${
-            item.preview_url
-          } class="preview-url"" target="_blank">Download Preview</a></p>
+          <div class="cart-item-bottom">
+            <p><a href="${
+              item.preview_url
+            } class="preview-url"" target="_blank">Download Preview</a></p>
+            <p>Cost: RM${item.cost}</p>
+          </div>
         </div>
       `;
     });
 
     const total = cart.reduce((sum, item) => sum + parseFloat(item.cost), 0);
     cartDiv.innerHTML += `<p><strong>Total: RM${total.toFixed(2)}</strong></p>`;
+    document.querySelector("#totalCost").innerHTML = `<span><strong>RM${total.toFixed(2)}</strong></span>`;
+
   }
 });
