@@ -40,24 +40,26 @@
                         <input type="file" name="files" id="file-upload" style="display: none;" multiple>
                     </label>
                 </div>
+                <!-- Uploaded File Section(initially hidden) -->
+                <div class="uploaded-file-container" style="display: none;">
+                    <div class="uploaded-file-title">
+                        <h2>Uploaded Files</h2>
+                        <div class="checkbox-container">
+                            <label class="switch">
+                                <input type="checkbox" id="group-toggle-button">
+                                <span class="slider"></span>
+                            </label>
+                            <p>Group Printing</p>
+                        </div>
+                    </div>
+                    <div class="uploaded-files-cards"></div>
+                </div>
             </div>
 
-            <!-- Uploaded File Section(initially hidden) -->
-            <div class="uploaded-file-container" style="display: none;">
-                <div class="uploaded-file-title">
-                    <h2>Uploaded Files</h2>
-                    <div class="checkbox-container">
-                        <label class="switch">
-                            <input type="checkbox" id="group-toggle-button">
-                            <span class="slider"></span>
-                        </label>
-                        <p>Group Printing</p>
-                    </div>
-                </div>
-                <div class="uploaded-files-cards"></div>
-            </div>
+
             <!-- CONFIG PANEL (initially hidden) -->
             <div id="config-panel" style="display: none; margin-top: 1rem;">
+                <h1>Configuration</h1>
                 <label>Layout:</label>
                 <select name="layout">
                     <option value="normal">Normal</option>
@@ -102,8 +104,10 @@
             </div>
 
             <!-- CART -->
-            <h2>Cart</h2>
-            <div id="cart"></div>
+            <div class="cart-section">
+                <h2>Cart</h2>
+                <div id="cart"></div>
+            </div>
         </div>
 
         <!-- RIGHT SIDE -->
@@ -124,8 +128,9 @@
 
             <div class="summary-container">
                 <!-- COST SUMMARY -->
+                <h3>Total Cost</h3>
                 <div id="cost-summary" style="margin-top: 2rem;">
-                    <h3>Total Cost: <span id="totalCost">RM 0.00</span></h3>
+                    <h3>Total: <span id="totalCost">RM 0.00</span></h3>
                 </div>
 
                 <button type="submit" id="submitOrderBtn">Submit Order</button>
